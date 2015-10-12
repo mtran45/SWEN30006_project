@@ -1,0 +1,24 @@
+<div class="panel panel-default">
+  <div class="panel-body">
+  	<h2><%= article.title %> </h2>
+    <h2><small>Date: <%= article.date_of_public.strftime("%Y %m %d")%></small></h2>
+    <% if article.image %>
+        <%= image_tag(article.image, size: "160x100")%>
+    <% end %>
+  	<p><%= truncate(article.summary, length: 200, separator: ' ') %></p>
+  	<% unless article.tag_list.empty? %>
+  		<p>Tagged: <%= article.tag_list.join(' ') %></p>
+  	<% end %>
+  	<div class="btn-group pull-right" role="group">
+	  	<%= link_to 'Show', article, class: "btn btn-default" %>
+	</div>
+  </div>
+
+	<div class="panel-footer">
+      <% if article.author %>
+      <%=article.author %>
+      <% end %>
+    </div>
+
+</div>
+

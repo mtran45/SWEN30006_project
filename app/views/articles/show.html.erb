@@ -1,0 +1,30 @@
+<p id="notice"><%= notice %></p>
+
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h3><%= @article.title %></h3>
+  </div>
+
+  <div class="panel-body">
+    <% if @article.image %>
+    <%= image_tag(@article.image)%>
+    <% end %>
+    <p><%= @article.summary %></p>
+    Original link :
+    <%= link_to @article.link, "#{@article.link}" %>
+  </div>
+      <div class="panel-footer clearfix">
+        <% if @article.author %>
+        <%= @article.author %>
+        <% end %>
+        <div class="pull-right">
+          From <%= @article.source.source_name %>
+        </div>
+      </div>
+</div>
+
+
+
+<div class="btn-group pull-right" role="group">
+  <%= link_to 'Back', articles_path ,class: "btn btn-default" %>
+</div>
