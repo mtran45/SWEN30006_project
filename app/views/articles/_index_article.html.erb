@@ -2,6 +2,9 @@
   <div class="panel-body">
   	<h2><%= article.title %> </h2>
     <h2><small>Date: <%= article.date_of_public.strftime("%Y %m %d")%></small></h2>
+    <% if article.weight %>
+      <h3>Weight: <%= article.weight %></h3>
+    <% end %>
     <% if article.image %>
         <%= image_tag(article.image, size: "160x100")%>
     <% end %>

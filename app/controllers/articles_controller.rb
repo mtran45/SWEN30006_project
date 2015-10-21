@@ -64,6 +64,10 @@ class ArticlesController < ApplicationController
     render "articles/index"
   end
 
+  def search
+    @articles = Article.search(params[:search]) if params[:search].present?
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_article
