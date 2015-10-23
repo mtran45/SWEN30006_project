@@ -57,9 +57,7 @@ class ArticlesController < ApplicationController
   end
 
   def search
-    if params[:search].present?
-      @articles = Article.search(params[:search]).paginate(page: params[:page], per_page: 10)
-    end
+    @articles = Article.search(params[:search]) if params[:search].present?
   end
 
   private
