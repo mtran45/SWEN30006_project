@@ -5,7 +5,7 @@ class ArticlesController < ApplicationController
   # GET /articles
   # GET /articles.json
   def index
-    @articles = Article.all
+    @articles = Article.paginate(page: params[:page], per_page: 10).order('pub_date DESC')
   end
 
   # GET /articles/1
@@ -57,7 +57,9 @@ class ArticlesController < ApplicationController
   end
 
   def search
-    @articles = Article.search(params[:search]) if params[:search].present?
+    if params[:search].present?
+      @articles = Article.search(params[:search]).paginate(page: params[:page], per_page: 10)
+    end
   end
 
   private

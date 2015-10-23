@@ -34,6 +34,8 @@ gem 'alchemy-api-rb', :require => 'alchemy_api'
 gem 'indico'
 gem 'engtagger'
 gem 'rake_text'
+gem 'will_paginate'
+gem 'will_paginate-bootstrap'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
