@@ -6,8 +6,8 @@
   </div>
 
   <div class="panel-body">
-    <% if @article.image %>
-    <%= image_tag(@article.image)%>
+    <% if @article.images %>
+    <%= image_tag(@article.images)%>
     <% end %>
     <p><%= @article.summary %></p>
     Original link :
@@ -18,7 +18,7 @@
         <%= @article.author %>
         <% end %>
         <div class="pull-right">
-          From <%= @article.source.source_name %>
+          From <%= @article.source.name %>
         </div>
       </div>
 </div>

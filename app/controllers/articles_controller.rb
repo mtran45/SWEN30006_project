@@ -2,6 +2,8 @@ class ArticlesController < ApplicationController
   before_action :set_article, only: [:show]
   before_action :authenticate_user
 
+  include Scraper
+
   # GET /articles
   # GET /articles.json
   def index
@@ -46,22 +48,12 @@ class ArticlesController < ApplicationController
 
   # refresh news
   def scrape
-    start_date = ::Date.today - 7
-    end_date = ::Date.today
-    newsau = NewsauImporter.new(start_date,end_date)
-    gard = GuardianImporter.new(start_date,end_date)
-    times = TheTimeImporter.new(start_date,end_date)
-    herald_break = HeraldSunBreakingImporter.new(start_date,end_date)
-    herald_tech = HeraldSunTechnology.new(start_date,end_date)
-    herald_sport = HeraldSunSportNews.new(start_date,end_date)
-    gard.scrape
-    newsau.scrape
-    times.scrape
-    herald_break.scrape
-    herald_tech.scrape
-    herald_sport.scrape
-    @articles = Article.all
-    render "articles/index"
+    scraper = Scraper.new
+    articles = scraper.scrape
+    articles.each do |article|
+      article.save
+    end
+    redirect_to :articles
   end
 
   def search

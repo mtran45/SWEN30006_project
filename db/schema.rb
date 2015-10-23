@@ -15,21 +15,22 @@ ActiveRecord::Schema.define(version: 20150918034232) do
 
   create_table "articles", force: :cascade do |t|
     t.string   "title"
-    t.datetime "date_of_public"
+    t.datetime "pub_date"
     t.text     "summary"
     t.string   "author"
-    t.text     "image"
+    t.text     "images"
     t.text     "link"
-    t.datetime "created_at",     null: false
-    t.datetime "updated_at",     null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.integer  "source_id"
   end
 
   add_index "articles", ["source_id"], name: "index_articles_on_source_id"
 
   create_table "sources", force: :cascade do |t|
-    t.string   "source_name"
-    t.text     "url"
+    t.string   "name"
+    t.string   "url"
+    t.string   "description"
     t.datetime "created_at",    null: false
     t.datetime "updated_at",    null: false
     t.string   "source_format"

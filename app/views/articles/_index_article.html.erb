@@ -1,27 +1,32 @@
-<div class="panel panel-default">
+<div class="panel panel-default index-article">
   <div class="panel-body">
-  	<h2><%= article.title %> </h2>
-    <h2><small>Date: <%= article.date_of_public.strftime("%Y %m %d")%></small></h2>
-    <% if article.weight %>
-      <h3>Weight: <%= article.weight %></h3>
-    <% end %>
-    <% if article.image %>
-        <%= image_tag(article.image, size: "160x100")%>
-    <% end %>
-  	<p><%= truncate(article.summary, length: 200, separator: ' ') %></p>
-  	<% unless article.tag_list.empty? %>
-  		<p>Tagged: <%= article.tag_list.join(' ') %></p>
-  	<% end %>
-  	<div class="btn-group pull-right" role="group">
-	  	<%= link_to 'Show', article, class: "btn btn-default" %>
-	</div>
-  </div>
-
-	<div class="panel-footer">
-      <% if article.author %>
-      <%=article.author %>
-      <% end %>
+    <h2><%= raw article.title %></h2>
+    <div class="byline">
+      By 
+      <% if article.author %><%= raw article.author %> @ <% end %>
+      <%= article.source.name %> | 
+      <%= article.pub_date.in_time_zone('Melbourne').strftime('%b %e, %Y - %-l:%M%p')%>
     </div>
-
+    <div class="media">
+      <% if article.images.present? %>
+        <div class="media-left">
+          <%= image_tag(article.images, title: article.images, class: 'media-object thumb') %>
+        </div>
+      <% end %>
+      <div class="media-body">
+       <%= raw article.summary %>
+      </div>
+    </div>
+  </div>
+  <div class="panel-footer">
+    Tags: 
+    <% article.tag_list.each do |tag| %>
+      <span class="label label-primary"><%= tag %></span>
+    <% end %>
+    <div class="btn-group pull-right" role="group">
+      <%= link_to 'Show', article, class: 'btn btn-default' %>
+      <%= link_to 'Link', article.link, class: 'btn btn-default', title: article.source.name %>
+    </div>
+  </div>
 </div>
 

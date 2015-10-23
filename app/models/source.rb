@@ -1,5 +1,3 @@
-
-# class used to store sources information
 class Source < ActiveRecord::Base
-
+	has_many :articles
 end
