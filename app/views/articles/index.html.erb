@@ -1,6 +1,6 @@
 <p id="notice"><%= notice %></p>
 
-<h1>All Articles</h1>
+<h1>All Articles (<%= @articles.count %>)</h1>
 
 <% @articles.each do |article| %>
     <%= render partial: 'index_article', locals: {article: article} %>

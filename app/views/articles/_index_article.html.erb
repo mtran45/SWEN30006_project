@@ -6,6 +6,9 @@
       <% if article.author %><%= raw article.author %> @ <% end %>
       <%= article.source.name %> | 
       <%= article.pub_date.in_time_zone('Melbourne').strftime('%b %e, %Y - %-l:%M%p')%>
+      <% if article.weight %>
+      | Search Weight: <%= article.weight %>
+      <% end %>
     </div>
     <div class="media">
       <% if article.images.present? %>

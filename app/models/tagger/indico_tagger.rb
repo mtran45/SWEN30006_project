@@ -5,7 +5,7 @@ module Tagger
 
     API_KEY = 'ad48cf7caf0d15033e2693886e65929a'
 
-    def extract(article)
+    def self.extract(article)
       Indico.api_key = API_KEY
       ind_keywords = Indico.keywords article.summary
       tags = ind_keywords.keys

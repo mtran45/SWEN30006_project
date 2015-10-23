@@ -4,7 +4,7 @@ module Tagger
   class OpencalaisTagger < Tagger
     API_KEY = 'Lo2dNoVhzlTPuIGBtEhMv7JZx9k5fpdt'
 
-    def extract(article)
+    def self.extract(article)
       tags = []
       oc = OpenCalais::Client.new(api_key: API_KEY)
       oc_response = oc.enrich article.summary

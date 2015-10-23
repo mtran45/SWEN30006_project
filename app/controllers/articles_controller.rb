@@ -2,8 +2,6 @@ class ArticlesController < ApplicationController
   before_action :set_article, only: [:show]
   before_action :authenticate_user
 
-  include Scraper
-
   # GET /articles
   # GET /articles.json
   def index
@@ -48,9 +46,11 @@ class ArticlesController < ApplicationController
 
   # refresh news
   def scrape
-    scraper = Scraper.new
+    scraper = Scraper::Scraper.new
+    tagger = Tagger::Tagger.new
     articles = scraper.scrape
     articles.each do |article|
+      tagger.tag(article)
       article.save
     end
     redirect_to :articles

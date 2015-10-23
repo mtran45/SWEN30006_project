@@ -5,12 +5,12 @@ module Tagger
       IndicoTagger.extract(article)
       AlchemyTagger.extract(article)
       OpencalaisTagger.extract(article)
-      EngTagger.extract(article)
+      EnglishTagger.extract(article)
       RakeTagger.extract(article)
 
     end
 
-    def extract(article)
+    def self.extract(article)
 
     end
 
