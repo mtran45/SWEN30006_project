@@ -104,7 +104,7 @@ class EmailController < ApplicationController
   def formatter article
     #This is source formatter 
 
-    html = html + "<div class='panel panel-default'>"
+    html = "<div class='panel panel-default'>"
     html = html + "<div class='panel-body'>"
     html = html + '<a href="' + article.link + '">' + "<h2>" + article.title + "</h2></a>"
     html = html + "<h3>Public Date:" + article.pub_date.strftime("%Y %m %d") + "</h3>"
