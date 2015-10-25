@@ -1,28 +1,19 @@
-== README
+==Project 3 - The Digest
+SWEN30006 - Software Modelling and Design
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+===Team
+* Thanh Tran - 391632
+* DI Mao - 733424
+* Rui Huang - 630711
 
-Things you may want to cover:
+To set up the application, run the following commands:
 
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
-
-
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
+ bundle install
+ rake db:create 
+ rake db:migrate 
+ rake db:seed
+ rails s
+ 
+If cloning from the git, a +secrets.yml+ file will need to be supplied.
+This should be placed under
+ config/secrets.yml
