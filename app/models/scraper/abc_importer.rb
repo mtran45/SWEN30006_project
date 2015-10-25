@@ -37,7 +37,8 @@ module Scraper
                                           item.at('./dc:creator').text : nil,
                               title: item.at('title').text,
                               summary: parse_summary(item.at('description').text),
-                              images: item.at('./*/media:thumbnail')['url'],
+                              images: item.at('./*/media:thumbnail') ?
+                                          item.at('./*/media:thumbnail')['url'] : nil,
                               link: item.at('link').text,
                               pub_date: pubDate)
       end
