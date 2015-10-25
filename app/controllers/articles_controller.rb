@@ -19,9 +19,9 @@ class ArticlesController < ApplicationController
   end
 
   # get news user interested in
-  def my_interests
-    @articles = Article.tagged_with(current_user.interest_list, :any =>true).to_a
-    render 'index'
+  def interests
+    @articles = Article.tagged_with(current_user.interest_list, any: true)
+    @articles = @articles.paginate(page: params[:page], per_page: 10).order('pub_date DESC')
   end
 
 

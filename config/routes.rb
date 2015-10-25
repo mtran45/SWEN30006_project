@@ -27,7 +27,7 @@ Rails.application.routes.draw do
   delete 'sessions/logout', as: :logout
 
   # Resourceful routes for posts
-  get '/interests', to: 'articles#my_interests', as: 'interests'
+  get '/interests', to: 'articles#interests', as: 'interests'
   get '/scrape', to: 'articles#scrape', as: 'scrape'
   post '/post/:id/comment', to: 'posts#comment', as: 'comment_on_post'
   resources :users, only: [:create,:new,:update,:destroy,:edit]
