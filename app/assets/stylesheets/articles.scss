@@ -1,0 +1,28 @@
+// Place all the styles related to the articles controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.thumb {
+	max-width: 75px;
+}
+
+.article-show {
+	img {
+		max-height: 150px;
+	}
+}
+
+.index-article {
+	h2 {
+		margin-top: 0px;
+		margin-bottom: 6px;
+	}
+	.byline {
+		margin-bottom: 15px;
+		color: gray;
+	}
+	.btn-group {
+		margin-top: -8px;
+		margin-right: -13px;
+	}
+}
