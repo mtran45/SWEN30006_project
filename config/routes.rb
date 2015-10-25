@@ -36,4 +36,6 @@ Rails.application.routes.draw do
   # Search URL
   get '/search', to: 'articles#search', as: 'search'
 
+  # send email to all user
+  get '/admin/email/', to: 'email#adminpanel', as: 'admin'
 end
