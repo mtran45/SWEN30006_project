@@ -9,7 +9,7 @@ module Tagger
         when 1
           AlchemyTagger.extract(article)
         when 2
-          #OpencalaisTagger.extract(article)
+          OpencalaisTagger.extract(article)
       end
 
       EnglishTagger.extract(article)
