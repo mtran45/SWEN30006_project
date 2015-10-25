@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
   
+  get '/email', to: 'email#create', as: 'email'
+
   get 'sources/new'
 
   get 'sources/destroy'

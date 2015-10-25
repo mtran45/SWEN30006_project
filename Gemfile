@@ -29,6 +29,8 @@ gem 'bcrypt', '~> 3.1.7'
 # Use acts as taggable on
 gem 'acts-as-taggable-on'
 
+# Use as sending email
+gem 'mandrill-api'
 gem 'open_calais'
 gem 'alchemy-api-rb', :require => 'alchemy_api'
 gem 'indico'
