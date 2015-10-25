@@ -2,7 +2,7 @@ require 'mandrill'
 
 class EmailController < ApplicationController
   def create
-    @articles = Article.tagged_with(current_user.interest_list, :any =>true).order(:date_of_public).to_a
+    @articles = Article.tagged_with(current_user.interest_list, :any =>true).order(:pub_date).to_a
     @user = current_user
     @history = MailRecording.where(email: @user.email)
     count = 0
@@ -15,9 +15,9 @@ class EmailController < ApplicationController
           html = html + "<div class='panel panel-default'>"
           html = html + "<div class='panel-body'>"
           html = html + "<h2>Title:</h2><h2>" + article.title + "</h2>"
-          html = html + "<h3>Public Date:" + article.date_of_public.strftime("%Y %m %d") + "</h3>"
-          if article.image
-              html = html + "<img src=" + article.image + " style= 'width:160px;height:100px';>" 
+          html = html + "<h3>Public Date:" + article.pub_date.strftime("%Y %m %d") + "</h3>"
+          if article.images
+              html = html + "<img src=" + article.images + " style= 'width:160px;height:100px';>" 
           end
           html = html + "<h4>" + article.summary + "</h4>"
           html = html + "</div></div>"
