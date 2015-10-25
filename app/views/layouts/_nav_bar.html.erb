@@ -14,13 +14,12 @@
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
-        <li><%= link_to "home", login_path %></li>
+        <li><%= link_to "Home", login_path %></li>
       </ul>
       <% if current_user %>
         <ul class="nav navbar-nav">
           <li><%= link_to "Articles", articles_path %></li>
           <li><%= link_to "Interests", interests_path %></li>
-          <li><%= link_to 'scrape', scrape_path %></li>
           <li><%= link_to 'Email', email_path %></li>
         </ul>
 <!--         <form class="navbar-form navbar-right" role="search">

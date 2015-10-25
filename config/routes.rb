@@ -28,7 +28,7 @@ Rails.application.routes.draw do
 
   # Resourceful routes for posts
   get '/interests', to: 'articles#interests', as: 'interests'
-  get '/scrape', to: 'articles#scrape', as: 'scrape'
+  get '/admin/scrape', to: 'articles#scrape', as: 'scrape'
   post '/post/:id/comment', to: 'posts#comment', as: 'comment_on_post'
   resources :users, only: [:create,:new,:update,:destroy,:edit]
   resources :articles

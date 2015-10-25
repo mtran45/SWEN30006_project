@@ -22,13 +22,19 @@
     </div>
   </div>
   <div class="panel-footer">
-    Tags: 
-    <% article.tag_list.each do |tag| %>
-      <span class="label label-primary"><%= tag %></span>
-    <% end %>
-    <div class="btn-group pull-right" role="group">
-      <%= link_to 'Show', article, class: 'btn btn-default' %>
-      <%= link_to 'Link', article.link, class: 'btn btn-default', title: article.source.name %>
+    <div class="row">
+    <div class="col-md-10">
+      Tags:
+      <% article.tag_list.each do |tag| %>
+        <span class="label label-primary"><%= tag %></span>
+      <% end %>
+    </div>
+    <div class="col-md-2">
+      <div class="btn-group" role="group">
+        <%= link_to 'Show', article, class: 'btn btn-default' %>
+        <%= link_to 'Link', article.link, class: 'btn btn-default', title: article.source.name %>
+      </div>
+    </div>
     </div>
   </div>
 </div>
