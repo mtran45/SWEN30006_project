@@ -6,7 +6,7 @@ class EmailController < ApplicationController
     @user = current_user
     @history = MailRecording.where(email: @user.email)
     count = 0
-    html = ''
+    html = "<h1>This is new digest</h1>"
 
     @articles.each do |article|
       if !@history.exists?(articlename: article.title)
@@ -24,7 +24,7 @@ class EmailController < ApplicationController
   	message = {"from_email"=>"noreply@thedigest.com",  
   			   "to"=>
            		[{"email" => ""}],
-           		"subject": "Sending a text email from the Mandrill API",
+           		"subject": "New Digest",
            		"from_name"=>"New Digest",
            		"html": ""
   				}
@@ -54,9 +54,9 @@ class EmailController < ApplicationController
     @users.each do |user|
         @articles = Article.tagged_with(user.interest_list, :any =>true).order(:pub_date).to_a
         @history = MailRecording.where(email: user.email)
-        puts user.email
+
         count = 0
-        html = ''
+        html = "<h1>This is new digest</h1>"
 
         @articles.each do |article|
           if !@history.exists?(articlename: article.title)
@@ -68,17 +68,14 @@ class EmailController < ApplicationController
             end
           end
         end 
-
         #This is email formatter
         mandrill = Mandrill::API.new 'FW0LswnpFAVZLncd5rVfjw'
         message = {"from_email"=>"noreply@thedigest.com",  
                "to"=>
                   [{"email" => ""}],
-                  "subject": "Sending a text email from the Mandrill API",
+                  "subject": "New Digest",
                   "from_name"=>"New Digest",
-                  "html": ""
               }
-        puts user.email
         message["to"][0]["email"] = user.email
 
 
@@ -87,9 +84,10 @@ class EmailController < ApplicationController
         else    
           message["html"] = html
         end
+        puts message
         #send email function
         result = mandrill.messages.send message
-        
+        puts result
         
 
     end
@@ -105,15 +103,16 @@ class EmailController < ApplicationController
 
   def formatter article
     #This is source formatter 
-    html = "<h1>This is new digest</h1>"
+
     html = html + "<div class='panel panel-default'>"
     html = html + "<div class='panel-body'>"
-    html = html + "<h2>Title:</h2><h2>" + article.title + "</h2>"
+    html = html + '<a href="' + article.link + '">' + "<h2>" + article.title + "</h2></a>"
     html = html + "<h3>Public Date:" + article.pub_date.strftime("%Y %m %d") + "</h3>"
     if article.images
         html = html + "<img src=" + article.images + " style= 'width:160px;height:100px';>" 
     end
     html = html + "<p>" + article.summary + "</p>"
+
     html = html + "</div></div>"
 
   end
